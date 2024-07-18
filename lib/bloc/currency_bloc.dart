@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vazifa25/logic/repostories/currency_repostory.dart';
 import 'currency_event.dart';
 import 'currency_state.dart';

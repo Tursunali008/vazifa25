@@ -1,16 +1,18 @@
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vazifa25/bloc/currency_bloc.dart';
 import 'package:vazifa25/bloc/currency_event.dart';
 import 'package:vazifa25/bloc/currency_state.dart';
 import 'package:vazifa25/logic/model/currensy.dart';
-
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Currency Converter"),
+        title: const Text("CONVERTER"),
+        centerTitle: true,
       ),
       body: BlocBuilder<CurrencyBloc, CurrencyState>(
         builder: (context, state) {
@@ -82,7 +84,8 @@ class _CurrencyConverterState extends State<CurrencyConverter> {
                 .toList(),
           ),
           TextField(
-            decoration: const InputDecoration(labelText: "Amount"),
+            decoration: const InputDecoration(
+                hintText: "Amount", border: OutlineInputBorder()),
             keyboardType: TextInputType.number,
             onChanged: (value) {
               setState(() {
@@ -92,8 +95,21 @@ class _CurrencyConverterState extends State<CurrencyConverter> {
           ),
           const SizedBox(height: 200),
           ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
             onPressed: _convertCurrency,
-            child: const Text("Convert"),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.change_circle,
+                  color: Colors.white,
+                ),
+                Text(
+                  "Convert",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ],
+            ),
           ),
           if (_convertedAmount != null)
             Text(
